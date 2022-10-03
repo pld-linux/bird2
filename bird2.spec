@@ -43,6 +43,8 @@ Obsoletes:	zebra
 Obsoletes:	zebra-guile
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
+%define 		_sysconfdir	/etc/bird
+
 %description
 The BIRD project is an attempt to create a routing daemon running on
 UNIX-like systems (but not necessarily limited to them) with full
@@ -112,6 +114,7 @@ fi
 %files
 %defattr(644,root,root,755)
 %doc %{?with_docs:obj/doc/*.html} doc/reply_codes bird-doc-%{version}/doc/*.pdf ChangeLog NEWS README 
+%dir %{_sysconfdir}
 %attr(755,root,root) %{_sbindir}/bird
 %attr(755,root,root) %{_sbindir}/birdc
 %attr(755,root,root) %{_sbindir}/birdcl

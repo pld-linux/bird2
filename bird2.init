@@ -7,7 +7,7 @@
 # description:	Dynamic Route Daemon for IPv4/IPv6 routers
 #
 # processname:	bird
-# config:	/etc/bird.conf
+# config:	/etc/bird/bird.conf
 
 
 # Source function library
@@ -30,7 +30,7 @@ else
 fi
 
 # Sanity checks.
-[ -f /etc/bird.conf ] || exit 0
+[ -f /etc/bird/bird.conf ] || exit 0
 
 RETVAL=0
 # See how we were called.
