@@ -1,4 +1,4 @@
-# Customized setings for bird IPv4
+# Customized setings for bird
 
 # Define nice level for bird
 SERVICE_RUN_NICE_LEVEL="+5"

@@ -4,7 +4,7 @@
 #
 # chkconfig:	345 11 90
 #
-# description:	Dynamic Route Daemon for IPv4 routers
+# description:	Dynamic Route Daemon for IPv4/IPv6 routers
 #
 # processname:	bird
 # config:	/etc/bird.conf
@@ -17,7 +17,7 @@
 . /etc/sysconfig/network
 
 # Get service config
-[ -f /etc/sysconfig/bird-ipv4 ] && . /etc/sysconfig/bird-ipv4
+[ -f /etc/sysconfig/bird ] && . /etc/sysconfig/bird
 
 # Check that networking is up.
 if is_yes "${NETWORKING}"; then
@@ -37,36 +37,36 @@ RETVAL=0
 case "$1" in
   start)
 	# Check if the services are already running?
-	if [ ! -f /var/lock/subsys/bird-ipv4 ]; then
-		msg_starting "bird for IPv4"
+	if [ ! -f /var/lock/subsys/bird ]; then
+		msg_starting "bird"
 		daemon ${SERVICE_RUN_NICE_LEVEL} /usr/sbin/bird -u bird -g bird
 		RETVAL=$?
-		[ $RETVAL -eq 0 ] && touch /var/lock/subsys/bird-ipv4
+		[ $RETVAL -eq 0 ] && touch /var/lock/subsys/bird
 	else
-		msg_already_running "bird for IPv4"
+		msg_already_running "bird"
 	fi
 	;;
   stop)
-	if [ -f /var/lock/subsys/bird-ipv4 ]; then
- 		msg_stopping "bird for IPv4"
+	if [ -f /var/lock/subsys/bird ]; then
+ 		msg_stopping "bird"
 		killproc bird
-		rm -f /var/lock/subsys/bird-ipv4
+		rm -f /var/lock/subsys/bird
 	else
-		msg_not_running "bird for IPv4"
+		msg_not_running "bird"
 	fi
 	;;
   reload|force-reload)
-	if [ -f /var/lock/subsys/bird-ipv4 ]; then
- 		msg_reloading "bird for IPv4"
+	if [ -f /var/lock/subsys/bird ]; then
+ 		msg_reloading "bird"
 		killproc bird -HUP
 		RETVAL=$?
 	else
-		msg_not_running "bird for IPv4"
+		msg_not_running "bird"
 		RETVAL=7
 	fi
 	;;
   status)
-	status bird-ipv4 bird
+	status bird bird
 	exit $?
 	;;
   restart|force-reload)
