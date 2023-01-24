@@ -6,14 +6,14 @@
 Summary:	The BIRD Internet Routing Daemon
 Summary(pl.UTF-8):	Demon BIRD Internetowego Routingu Dynamicznego
 Name:		bird2
-Version:	2.0.10
+Version:	2.0.12
 Release:	0.1
 License:	GPL v2+
 Group:		Networking/Daemons
 Source0:	https://bird.network.cz/download/bird-%{version}.tar.gz
-# Source0-md5:	1026621839e0162844afa991ad9a7355
+# Source0-md5:	db572253dd43ccdd31813d3c8fa384c4
 Source1:	https://bird.network.cz/download/bird-doc-%{version}.tar.gz
-# Source1-md5:	ad099b03849730aa7bd6931b89dae490
+# Source1-md5:	2ef74f0d6c01d4d718058e30938abf71
 Source2:	%{name}.init
 Source3:	%{name}.sysconfig
 Source4:	%{name}.service
